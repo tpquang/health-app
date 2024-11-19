@@ -144,6 +144,79 @@ $gradient-angles: (0, 45, 90, 135, 180, 225, 270, 315);
   }
 }
 
+$border-radius: (
+  'none': 0,
+  'sm': 0.125rem,    // 2px
+  'md': 0.25rem,     // 4px
+  'lg': 0.5rem,      // 8px
+  'xl': 0.75rem,     // 12px
+  '2xl': 1rem,       // 16px
+  '3xl': 1.5rem,     // 24px
+  'full': 9999px
+);
+
+// Generate rounded utilities for all sides
+@each $key, $value in $border-radius {
+  .rounded-#{$key} {
+    border-radius: $value;
+  }
+}
+
+// Generate rounded utilities for individual corners
+@each $key, $value in $border-radius {
+  // Top
+  .rounded-t-#{$key} {
+    border-top-left-radius: $value;
+    border-top-right-radius: $value;
+  }
+  
+  // Right
+  .rounded-r-#{$key} {
+    border-top-right-radius: $value;
+    border-bottom-right-radius: $value;
+  }
+  
+  // Bottom
+  .rounded-b-#{$key} {
+    border-bottom-left-radius: $value;
+    border-bottom-right-radius: $value;
+  }
+  
+  // Left
+  .rounded-l-#{$key} {
+    border-top-left-radius: $value;
+    border-bottom-left-radius: $value;
+  }
+  
+  // Individual corners
+  .rounded-tl-#{$key} {
+    border-top-left-radius: $value;
+  }
+  
+  .rounded-tr-#{$key} {
+    border-top-right-radius: $value;
+  }
+  
+  .rounded-bl-#{$key} {
+    border-bottom-left-radius: $value;
+  }
+  
+  .rounded-br-#{$key} {
+    border-bottom-right-radius: $value;
+  }
+}
+
+// Responsive variants
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @each $key, $radius in $border-radius {
+      .#{$breakpoint}\:rounded-#{$key} {
+        border-radius: $radius;
+      }
+    }
+  }
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -175,3 +248,8 @@ $gradient-angles: (0, 45, 90, 135, 180, 225, 270, 315);
 .flex-center {
   @include flex-center;
 }
+
+.border-none {
+  border: none;
+}
+

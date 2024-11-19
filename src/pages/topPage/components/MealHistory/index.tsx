@@ -46,18 +46,6 @@ const MealHistory = ({ initialData, onLoadMore }: MealHistoryProps) => {
             </div>
           ))}
         </div>
-        
-        {hasMore && (
-          <div className="text-center mt-4">
-            <button 
-              onClick={handleLoadMore}
-              disabled={loading}
-              className="btn-primary"
-            >
-              {loading ? '読み込み中...' : '記録をもっと見る'}
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
