@@ -1,0 +1,48 @@
+@use "../abstracts/variables" as *;
+@use "sass:map";
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin responsive($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  @media (min-width: map.get($breakpoints, 'sm')) {
+    max-width: 540px;
+  }
+
+  @media (min-width: map.get($breakpoints, 'md')) {
+    max-width: 720px;
+  }
+
+  @media (min-width: map.get($breakpoints, 'lg')) {
+    max-width: 960px;
+  }
+
+  @media (min-width: map.get($breakpoints, 'xl')) {
+    max-width: 960px;
+  }
+
+  @media (min-width: map.get($breakpoints, 'xxl')) {
+    max-width: 1440px;
+  }
+}

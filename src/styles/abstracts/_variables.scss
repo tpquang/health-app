@@ -1,0 +1,42 @@
+// Colors map
+$colors: (
+  'primary-300': #FFCC21,
+  'primary-400': #FF963C,
+  'primary-500': #EA6C00,
+  'secondary-color': #8FE9D0,
+  'success-color': #28a745,
+  'danger-color': #dc3545,
+  'warning-color': #ffc107,
+  'info-color': #17a2b8,
+  'light': #FFFFFF,
+  'dark-600': #2E2E2E,
+  'dark-500': #414141,
+  'gray-500': #646464,
+  'gray-400': #777777,
+  'gray-300': #8b8b8b,
+);
+
+// Typography
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Spacing
+$spacing-unit: 8px;
+$container-max-width: 1200px;
+
+// Breakpoints
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1280px,
+  'xxl': 1920px
+);
+
+// Z-index
+$z-index: (
+  'modal': 1000,
+  'dropdown': 100,
+  'header': 50
+); 

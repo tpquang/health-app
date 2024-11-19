@@ -1,0 +1,177 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+$spacers: (
+  0: 0,
+  1: 0.25rem,
+  // 4px
+  2: 0.5rem,
+  // 8px
+  3: 0.75rem,
+  // 12px
+  4: 1rem,
+  // 16px
+  5: 1.25rem,
+  // 20px
+  6: 1.5rem,
+  // 24px
+  8: 2rem,
+  // 32px
+  10: 2.5rem,
+  // 40px
+  12: 3rem,
+  // 48px
+  14: 3.5rem,
+  // 56px
+  16: 4rem // 64px,
+);
+
+@each $key, $value in $spacers {
+  .gap-#{$key} {
+    gap: $value;
+  }
+  .gap-x-#{$key} {
+    column-gap: $value;
+  }
+  .gap-y-#{$key} {
+    row-gap: $value;
+  }
+}
+
+@each $key, $value in $spacers {
+  .p-#{$key} {
+    padding: $value;
+  }
+  .px-#{$key} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  .py-#{$key} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .pt-#{$key} {
+    padding-top: $value;
+  }
+  .pr-#{$key} {
+    padding-right: $value;
+  }
+  .pb-#{$key} {
+    padding-bottom: $value;
+  }
+  .pl-#{$key} {
+    padding-left: $value;
+  }
+}
+
+@each $key, $value in $spacers {
+  .m-#{$key} {
+    margin: $value;
+  }
+  .mx-#{$key} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  .my-#{$key} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .mt-#{$key} {
+    margin-top: $value;
+  }
+  .mr-#{$key} {
+    margin-right: $value;
+  }
+  .mb-#{$key} {
+    margin-bottom: $value;
+  }
+  .ml-#{$key} {
+    margin-left: $value;
+  }
+}
+
+.m-auto {
+  margin: auto;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color;
+  }
+
+  .hover\:bg-#{$name}:hover {
+    background-color: $color;
+  }
+
+  @for $i from 1 through 9 {
+    $opacity: $i * 0.1;
+    .bg-#{$name}-#{$i}0 {
+      background-color: rgba($color, $opacity);
+    }
+  }
+}
+
+@each $name, $color in $colors {
+  .color-#{$name} {
+    color: $color;
+  }
+
+  .hover\:color-#{$name}:hover {
+    color: $color;
+  }
+
+  @for $i from 1 through 9 {
+    $opacity: $i * 0.1;
+    .color-#{$name}-#{$i}0 {
+      color: rgba($color, $opacity);
+    }
+  }
+}
+
+$gradient-angles: (0, 45, 90, 135, 180, 225, 270, 315);
+
+@each $angle in $gradient-angles {
+  .bg-gradient-#{$angle}deg {
+    background: linear-gradient(#{$angle}deg, #ffcc21 0%, #ff963c 100%);
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
+  @include flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
