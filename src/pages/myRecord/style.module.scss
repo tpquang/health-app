@@ -1,20 +1,9 @@
 @use "../../styles/abstracts/variables" as *;
 
-.recommendedColumnItem {
-  flex: 1;
-  padding: 24px 8px 22px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-self: center;
-  @media (max-width: 480px) {
-    flex: 0 0 100%;
-    width: 100%;
-  }
-  .shortLine {
-    align-self: center;
-    width: 56px;
-    height: 1px;
-    background-color: map-get($colors, "light");
-  }
+.bodyRecordWrapper {
+  height: 304px;
+}
+
+.exerciseWrapper {
+  height: 264px;
 }

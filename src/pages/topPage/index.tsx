@@ -10,7 +10,7 @@ import { bodyRecordsData } from "../../mocks/topPage/data/bodyRecordsData";
 import { achiverData } from "../../mocks/topPage/data/achiverData";
 
 const TopPage = () => {
-  const [history, setHistory] = useState<any[]>([]);
+  const [meal, setMeal] = useState<any[]>([]);
   const [achievement, setAchievement] = useState<any>(null);
   const [bodyRecord, setBodyRecord] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ const TopPage = () => {
     setLoading(false);
     setAchievement(achiverData);
     setBodyRecord(bodyRecordsData);
-    setHistory(mealData);
+    setMeal(mealData);
   }, []);
 
   const fetchInitialData = async () => {
@@ -32,7 +32,7 @@ const TopPage = () => {
         topPageService.getBodyRecord(),
       ]);
 
-      setHistory(historyData.data);
+      setMeal(mealData.data);
       setAchievement(achievementData.data);
       setBodyRecord(bodyData.data);
     } catch (error) {
@@ -46,17 +46,19 @@ const TopPage = () => {
 
   return (
     <div className={styles.topPage}>
-      <div className="flex">
-        <Achievement data={achievement} />
-        <BodyRecord data={bodyRecord} />
+      <div className={`${styles.chartComponent} row`}>
+        <div className={`${styles.achievement} col-5`}>
+          <Achievement data={achievement} />
+        </div>
+        <div className={`${styles.bodyRecord} col-7`}>
+          <BodyRecord data={bodyRecord} />
+        </div>
       </div>
       <MealHistory
-        initialData={history}
-        onLoadMore={(newData) => setHistory((prev) => [...prev, ...newData])}
+        initialData={meal}
+        onLoadMore={(newData) => setMeal((prev) => [...prev, ...newData])}
       />
-      <Button variant="gradient" size="large" className="mt-4">
-        Large Button
-      </Button>
+      
     </div>
   );
 };

@@ -1,0 +1,27 @@
+.buttonHexagon {
+    width: 136px;
+    height: 136px;
+    border: 0;
+    background: none;
+    position: relative;
+    cursor: pointer;
+    .svg {
+        width: 136px;
+        height: 136px;
+    }
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .icon {
+            width: 56px;
+            height: 56px;
+        }
+        .text {
+            font-family: 'Inter';
+            font-size: 20px;
+            color: #fff;
+        }
+    }
+}

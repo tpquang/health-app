@@ -1,0 +1,17 @@
+.achievement {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  :global {
+    .recharts-label {
+      tspan {
+        &:first-child {
+          font-size: 18px;  // Smaller font for date
+        }
+      }
+    }
+  }
+}

@@ -1,49 +1,53 @@
-import React from 'react';
-
+import React from "react";
+import styles from "./style.module.scss";
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   onClick?: () => void;
   className?: string;
+  iconUrl?: string;
 }
 
 const ButtonHexagon: React.FC<ButtonProps> = ({
   children,
-  variant = 'primary',
-  size = 'medium',
   disabled = false,
   onClick,
-  className = '',
+  iconUrl,
 }) => {
-  const baseStyles = 'rounded-md font-medium transition-colors duration-200';
-  
-  const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700',
-    outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50'
-  };
-
-  const sizes = {
-    small: 'px-3 py-1.5 text-sm',
-    medium: 'px-4 py-2 text-base',
-    large: 'px-6 py-3 text-lg'
-  };
-
   return (
     <button
-      className={`
-        ${baseStyles}
-        ${variants[variant]}
-        ${sizes[size]}
-        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-        ${className}
-      `}
+      className={styles.buttonHexagon}
       onClick={onClick}
       disabled={disabled}
     >
-      {children}
+      <svg
+        className={styles.svg}
+        viewBox="0 0 116 134"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 33.5L58 0L116 33.5V100.5L58 134L0 100.5L0 33.5Z"
+          fill="url(#paint0_linear_430_200)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_430_200"
+            x1="25.9565"
+            y1="165.202"
+            x2="147.019"
+            y2="118.302"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#FFCC21" />
+            <stop offset="1" stopColor="#FF963C" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div className={styles.content}>
+        {iconUrl && <img src={iconUrl} alt={children as string} className={styles.icon} />}
+        <p className={styles.text}>{children}</p>
+      </div>
     </button>
   );
 };

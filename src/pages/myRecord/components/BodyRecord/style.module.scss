@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "../../../../styles/abstracts/variables" as *;
+.chartWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .chart {
+    flex: 1;
+  }
+  .chartTitleText {
+    line-height: 18px;
+  }
+  .chartTitleTextWrapper {
+    min-width: 96px;
+  }
+  .chartFilter {
+    .chartFilterItem {
+      padding: 0 20px;
+      background-color: map.get($colors, "light");
+      border-radius: 12px;
+      color: map.get($colors, "primary-300");
+
+      &.active {
+        background-color: map.get($colors, "primary-300");
+        color: map.get($colors, "light");
+      }
+    }
+  }
+}
