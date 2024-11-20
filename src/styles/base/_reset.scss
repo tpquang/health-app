@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as *;
+@use "sass:map";
 
 *,
 *::before,
@@ -12,9 +13,32 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: map.get($colors, "gray-400");
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: map.get($colors, "primary-300");
+    border-radius: 3px;
+    height: 32px;
+  }
 }
 
 img {
   max-width: 100%;
   height: auto;
 } 
+
+input {
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}

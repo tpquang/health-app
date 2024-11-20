@@ -2,24 +2,33 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../../services/api/auth.service";
 import { LoginCredentials } from "../../types/auth.types";
+import Button from "../../components/Button/Button";
+import style from "./style.module.scss";
+import { Toast } from '../../components/Toast/Toast';
+
 export const Login = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState<LoginCredentials>({
     username: "",
     password: "",
   });
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log("credentials", credentials);
       const response = await authService.login(credentials);
-      console.log("response", response);
+      console.log(response);
       if (response.code === 200) {
         navigate("/");
+      } else {
+        setToastMessage(response.message || 'Error');
+        setShowToast(true);
       }
     } catch (error) {
-      console.error("Login failed:", error);
+      setToastMessage((error as Error).message);
+      setShowToast(true);
     }
   };
 
@@ -32,22 +41,56 @@ export const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="username"
-        value={credentials.username}
-        onChange={handleChange}
-        placeholder="Username"
-      />
-      <input
-        type="password"
-        name="password"
-        value={credentials.password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="container">
+      <div className="row justify-center">
+        <div className="col-12 col-md-6">
+          <form onSubmit={handleSubmit} className={style.form}>
+            <div className="mb-4">
+              <div className={style.inputWrapper}>
+                <label className={style.label} htmlFor="username">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  name="username"
+                  value={credentials.username}
+                  onChange={handleChange}
+                  placeholder="Username"
+                  className={style.input}
+                />
+              </div>
+
+              <div className={style.inputWrapper}>
+                <label className={style.label} htmlFor="password">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                  className={style.input}
+                />
+              </div>
+            </div>
+            <Button
+              variant="gradient"
+              size="large"
+              onClick={() => handleSubmit}
+            >
+              <span className="fw-700">LOGIN</span>
+            </Button>
+          </form>
+        </div>
+      </div>
+      {showToast && (
+        <Toast 
+          message={toastMessage} 
+          type="error" 
+          onClose={() => setShowToast(false)}
+        />
+      )}
+    </div>
   );
 };

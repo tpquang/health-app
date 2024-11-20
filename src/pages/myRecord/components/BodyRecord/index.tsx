@@ -7,11 +7,11 @@ import {
   CartesianGrid,
 } from "recharts";
 import styles from "./style.module.scss";
-import { bodyRecordsData } from "../../../../mocks/topPage/data/bodyRecordsData";
+import { BodyRecord as BodyRecordType } from "../../../../types/bodyRecord.type";
 
-const BodyRecord = (props: { data: any }) => {
-  if (!props) return null;
-  const dataChart = bodyRecordsData.month;
+const BodyRecord = ({ data }: { data: BodyRecordType[] }) => {
+  if (!data) return null;
+  const dataChart = data;
   return (
     <div className={styles.chartWrapper}>
       <div className={`${styles.chartTitle} flex color-light`}>

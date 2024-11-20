@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
 import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [notificationCount, setNotificationCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,11 @@ const Header = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
 
   return (
     <header className={styles.header + " bg-dark-500"}>
@@ -72,6 +78,11 @@ const Header = () => {
                 <li><Link to="/#">選択中のコース</Link></li>
                 <li><Link to="/column">コラム一覧</Link></li>
                 <li><Link to="/#">設定</Link></li>
+                <li>
+                  <a onClick={handleLogout} className="pointer">
+                    ログアウト
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

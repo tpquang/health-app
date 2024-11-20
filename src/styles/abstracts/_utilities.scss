@@ -209,8 +209,18 @@ $border-radius: (
   }
 }
 
+@each $opacity in (0, 25, 50, 75, 100) {
+  .opacity-#{$opacity} {
+    opacity: #{$opacity * 0.01};
+  }
+}
+
 .pointer {
   cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
 }
 
 .uppercase {

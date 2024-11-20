@@ -9,3 +9,7 @@ export interface PaginationResponse {
   totalPages: number;
   hasMore: boolean;
 } 
+
+export interface TimeTypeParams {
+  timeType?: "month" | "year" | "week" | "day";
+}

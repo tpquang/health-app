@@ -3,6 +3,8 @@
 
 .topPage {
   .chartComponent {
+    margin-left: 0;
+    margin-right: 0;
     height: 468px;
     @media (max-width: map.get($breakpoints, "xl")) {
       height: 312px;

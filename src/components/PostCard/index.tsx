@@ -1,35 +1,39 @@
-import { FC } from 'react';
-import styles from './style.module.scss';
-import { type PostCard as PostCardType } from '../../types/postCard.types';
+import { FC } from "react";
+import styles from "./style.module.scss";
+import { type Post as PostType } from "../../types/post.type";
 
-const PostCard: FC<PostCardType> = ({ 
-  image, 
-  date, 
-  time, 
-  title, 
-  tags = [], 
-  className 
+const PostCard: FC<PostType> = ({
+  image,
+  date,
+  time,
+  title,
+  tags = [],
+  className,
 }) => {
   return (
     <div className={`${styles.postCard} ${className}`}>
-      <div className={styles.imageWrapper}>
-        <img src={image} alt={title} className={styles.image} />
-        <div className={styles.metadata}>
-          {date} | {time}
+      <div className={styles.postItem}>
+        <div className={styles.postImageGroup}>
+          <img className={styles.postImage} src={image} alt={title} />
+          <p className={`${styles.postDate} fs-15`}>
+            <span className="mr-4">{date}</span>
+            <span>{time}</span>
+          </p>
         </div>
-      </div>
-      <h3 className={styles.title}>{title}</h3>
-      {tags.length > 0 && (
-        <div className={styles.tags}>
-          {tags.map((tag, index) => (
-            <span key={index} className={styles.tag}>
-              {tag}
-            </span>
+        <p className={`${styles.postTitle} fs-15`}>{title}</p>
+        <div className={styles.postTagGroup}>
+          {tags.map((tag: string) => (
+            <p
+              className={`${styles.postTag} color-primary-400 fs-12`}
+              key={tag}
+            >
+              {`#${tag}`}
+            </p>
           ))}
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default PostCard; 
+export default PostCard;

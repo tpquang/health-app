@@ -1,7 +1,6 @@
-import ButtonHexagon from "../../components/ButtonHexagon/ButtonHexagon";
-import { myDiaryData } from "../../mocks/myrecords/data/myDiaryData";
-import { myExerciseData } from "../../mocks/myrecords/data/myExerciseData";
-import { bodyRecordsData } from "../../mocks/myrecords/data/bodyRecordsData";
+import { myDiaryData } from "../../mocks/myRecords/data/myDiaryData";
+import { myExerciseData } from "../../mocks/myRecords/data/myExerciseData";
+import { bodyRecordsData } from "../../mocks/myRecords/data/bodyRecordsData";
 import { useRef } from "react";
 import BodyRecord from "./components/BodyRecord";
 import MyExercise from "./components/MyExercise";

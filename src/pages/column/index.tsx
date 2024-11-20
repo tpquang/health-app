@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { columnService } from "../../services/api/column.service";
 import styles from "./style.module.scss";
-import { postData } from "../../mocks/column/data/postData";
 import Button from "../../components/Button/Button";
+import PostCard from "../../components/PostCard";
+import { type Post as PostType } from "../../types/post.type";
 
 const Column = () => {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -31,8 +32,7 @@ const Column = () => {
   };
 
   useEffect(() => {
-    // fetchPosts(1);
-    setPosts(postData);
+    fetchPosts(1);
   }, []);
 
   const handleLoadMore = () => {
@@ -85,29 +85,7 @@ const Column = () => {
         <div className="container">
           <div className={`${styles.mxCustom} row`}>
             {posts.map((post) => (
-              <div className="col-md-3" key={post.id}>
-                <div className={styles.postItem}>
-                  <div className={styles.postImageGroup}>
-                    <img
-                      className={styles.postImage}
-                      src={post.image}
-                      alt={post.title}
-                    />
-                    <p className={styles.postDate}>{post.createdOn}</p>
-                  </div>
-                  <p className={`${styles.postTitle} fs-15`}>{post.title}</p>
-                  <div className={styles.postTagGroup}>
-                    {post.tags.map((tag: string) => (
-                      <p
-                        className={`${styles.postTag} color-primary-400 fs-12`}
-                        key={tag}
-                      >
-                        {`#${tag}`}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <PostCard key={post.id} {...post} className="col-md-3" />
             ))}
           </div>
           {hasMore && (
