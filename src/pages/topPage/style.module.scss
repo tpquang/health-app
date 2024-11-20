@@ -5,17 +5,16 @@
   .chartComponent {
     margin-left: 0;
     margin-right: 0;
-    height: 468px;
-    @media (max-width: map.get($breakpoints, "xl")) {
-      height: 312px;
-    }
-    @media (max-width: map.get($breakpoints, "sm")) {
-      height: 312px;
-    }
+    height: auto;
 
     .achievement {
-      background: url("/images/mypage/mypage-banner.jpg") no-repeat center
-        center / cover;
+      position: relative;
+      background: url("/images/mypage/mypage-banner.jpg") no-repeat center center / cover;
+      width: 100%;
+      
+      @media (min-width: 1280px) {
+        height: 312px;
+      }
     }
 
     .bodyRecord {

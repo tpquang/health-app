@@ -1,7 +1,8 @@
 import styles from "./style.module.scss";
+import { ExerciseType } from "../../../../types/exercise.type";
+import ExerciseItem from "../../../../components/ExerciseItem";
 
-const MyExercise = (props: { data: any }) => {
-  console.log(props.data);
+const MyExercise = (props: { data: ExerciseType[] }) => {
   return (
     <div className={styles.exerciseWrapper}>
       <div className={`${styles.exerciseTitle} flex color-light`}>
@@ -13,16 +14,8 @@ const MyExercise = (props: { data: any }) => {
         <p className="fs-22">2021.05.21</p>
       </div>
       <div className={`${styles.exerciseList} row`}>
-        {props.data.map((item: any) => (
-          <div className={`${styles.exerciseItem} col-6`} key={item.id}>
-            <div>
-              <p className="fs-12">{item.activity}</p>
-              <p className="fs-12">{item.energyConsumption}</p>
-            </div>
-            <div className={styles.exerciseItemTime}>
-              <p className="fs-12">{item.activityTime}</p>
-            </div>
-          </div>
+        {props.data.map((item: ExerciseType) => (
+          <ExerciseItem key={item.id} item={item} />
         ))}
       </div>
     </div>

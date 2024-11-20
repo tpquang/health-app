@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "../../styles/abstracts/variables" as *;
+
+.imageWrapper {
+  margin: 4px;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dateWrapper {
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    background-color: map.get($colors, "primary-300");
+    padding: 8px;
+    color: map.get($colors, "light");
+  }
+}

@@ -29,7 +29,7 @@ const BodyRecord = ({ data }: { data: BodyRecordType[] }) => {
             dataKey="name"
             axisLine={false}
             tickLine={false}
-            tick={{ fill: '#FFFFFF' }}
+            tick={{ fill: '#FFFFFF', fontSize: 10 }}
             padding={{ left: 0, right: 0 }}
             interval="preserveStartEnd"
           />
@@ -49,7 +49,7 @@ const BodyRecord = ({ data }: { data: BodyRecordType[] }) => {
           />
           <Line
             type="linear"
-            dataKey="fat"
+            dataKey="bodyFat"
             stroke="#8FE9D0"
             strokeWidth={2}
             dot={{ 

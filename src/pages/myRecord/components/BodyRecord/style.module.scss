@@ -20,7 +20,8 @@
       background-color: map.get($colors, "light");
       border-radius: 12px;
       color: map.get($colors, "primary-300");
-
+      cursor: pointer;
+      
       &.active {
         background-color: map.get($colors, "primary-300");
         color: map.get($colors, "light");

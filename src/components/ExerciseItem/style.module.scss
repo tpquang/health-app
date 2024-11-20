@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "../../styles/abstracts/variables" as *;
+
+.exerciseItem {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 0 20px;
+  .exerciseItemWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid map.get($colors, "gray-400");
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 2px;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: map.get($colors, "light");
+    }
+  }
+}

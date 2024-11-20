@@ -11,7 +11,6 @@ export const columnService = {
       date: convertTime(post.createdOn, { type: "date" }),
       time: convertTime(post.createdOn, { type: "time" }),
     }));
-    console.log(response.data.data);
     return response.data;
   },
 };

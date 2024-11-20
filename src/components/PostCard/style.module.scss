@@ -6,15 +6,14 @@
 
   .postImageGroup {
     position: relative;
-    height: 144px;
     .postImage {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 3 / 2;
       object-fit: cover;
     }
     .postDate {
       position: absolute;
-      bottom: 0;
+      bottom: 6px;
       left: 0;
       padding: 4px 8px;
       background-color: map.get($colors, "primary-300");

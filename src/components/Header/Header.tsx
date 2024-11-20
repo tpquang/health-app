@@ -43,15 +43,13 @@ const Header = () => {
               <img src={"images/icons/icon_memo.svg"} alt="memo" />
               <p className="font-noto text-16 color-light">自分の記録</p>
             </Link>
-            <Link
-              to="/#"
+            <a
               className={`flex items-center gap-2 ${styles.itemMenuWithIcon}`}
             >
               <img src={"images/icons/icon_challenge.svg"} alt="challenge" />
               <p className="font-noto text-16 color-light">チャレンジ</p>
-            </Link>
-            <Link
-              to="/#"
+            </a>
+            <a
               className={`flex items-center gap-2 ${styles.itemMenuWithIcon}`}
             >
               <div className="relative">
@@ -61,7 +59,7 @@ const Header = () => {
                 <img src={"images/icons/icon_info.svg"} alt="information" />
               </div>
               <p className="font-noto text-16 color-light">お知らせ</p>
-            </Link>
+            </a>
           </div>
           <div className="relative" ref={menuRef}>
             <img
@@ -73,11 +71,11 @@ const Header = () => {
             <div className={`${styles.menuCollapse} ${isMenuOpen ? styles.active : ''}`}>
               <ul>
                 <li><Link to="/my-record">自分の記録</Link></li>
-                <li><Link to="/#">体重グラフ</Link></li>
-                <li><Link to="/#">目標</Link></li>
-                <li><Link to="/#">選択中のコース</Link></li>
+                <li><a>体重グラフ</a></li>
+                <li><a>目標</a></li>
+                <li><a>選択中のコース</a></li>
                 <li><Link to="/column">コラム一覧</Link></li>
-                <li><Link to="/#">設定</Link></li>
+                <li><a>設定</a></li>
                 <li>
                   <a onClick={handleLogout} className="pointer">
                     ログアウト

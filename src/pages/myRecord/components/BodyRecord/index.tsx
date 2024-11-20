@@ -8,8 +8,19 @@ import {
 } from "recharts";
 import styles from "./style.module.scss";
 import { BodyRecord as BodyRecordType } from "../../../../types/bodyRecord.type";
+import { useState } from "react";
+import { TimeTypeParams } from "../../../../types/common";
 
-const BodyRecord = ({ data }: { data: BodyRecordType[] }) => {
+const BodyRecordChart = ({ data, onFilterChange, activeFilterDefault }: { data: BodyRecordType[], onFilterChange: (timeType: TimeTypeParams) => void, activeFilterDefault: TimeTypeParams }) => {
+  const [activeFilter, setActiveFilter] = useState(activeFilterDefault);
+
+  const handleFilterClick = (timeType: TimeTypeParams) => {
+    if (timeType.timeType) {
+      setActiveFilter(timeType);
+      onFilterChange(timeType);
+    }
+  };
+
   if (!data) return null;
   const dataChart = data;
   return (
@@ -52,7 +63,7 @@ const BodyRecord = ({ data }: { data: BodyRecordType[] }) => {
             />
             <Line
               type="linear"
-              dataKey="fat"
+              dataKey="bodyFat"
               stroke="#8FE9D0"
               strokeWidth={2}
               dot={{
@@ -65,20 +76,32 @@ const BodyRecord = ({ data }: { data: BodyRecordType[] }) => {
         </ResponsiveContainer>
       </div>
       <div className={`${styles.chartFilter} flex gap-4`}>
-        <div className={`${styles.chartFilterItem} ${styles.active}`}>
-          <p className="font-noto ">日</p>
+        <div 
+          className={`${styles.chartFilterItem} ${activeFilter.timeType === 'day' ? styles.active : ''}`}
+          onClick={() => handleFilterClick({ timeType: 'day' })}
+        >
+          <p className="font-noto">日</p>
         </div>
-        <div className={styles.chartFilterItem}>
+        <div 
+          className={`${styles.chartFilterItem} ${activeFilter.timeType === 'week' ? styles.active : ''}`}
+          onClick={() => handleFilterClick({ timeType: 'week' })}
+        >
           <p className="font-noto">週</p>
         </div>
-        <div className={styles.chartFilterItem}>
+        <div 
+          className={`${styles.chartFilterItem} ${activeFilter.timeType === 'month' ? styles.active : ''}`}
+          onClick={() => handleFilterClick({ timeType: 'month' })}
+        >
           <p className="font-noto">月</p>
         </div>
-        <div className={styles.chartFilterItem}>
+        <div 
+          className={`${styles.chartFilterItem} ${activeFilter.timeType === 'year' ? styles.active : ''}`}
+          onClick={() => handleFilterClick({ timeType: 'year' })}
+        >
           <p className="font-noto">年</p>
         </div>
       </div>
     </div>
   );
 };
-export default BodyRecord;
+export default BodyRecordChart;

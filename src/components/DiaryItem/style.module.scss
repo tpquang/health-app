@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "../../styles/abstracts/variables" as *;
+
+.diaryWrapper {
+  padding: 4px;
+  .diaryItem {
+    padding: 16px;
+  border: 2px solid map.get($colors, "gray-400");
+  .diaryItemDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

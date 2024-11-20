@@ -19,11 +19,11 @@ export const Login = () => {
     e.preventDefault();
     try {
       const response = await authService.login(credentials);
-      console.log(response);
-      if (response.code === 200) {
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
         navigate("/");
       } else {
-        setToastMessage(response.message || 'Error');
+        setToastMessage(response.data.message || 'Error');
         setShowToast(true);
       }
     } catch (error) {
@@ -71,13 +71,14 @@ export const Login = () => {
                   onChange={handleChange}
                   placeholder="Password"
                   className={style.input}
+                  autoComplete="on"
                 />
               </div>
             </div>
             <Button
               variant="gradient"
               size="large"
-              onClick={() => handleSubmit}
+              type="submit"
             >
               <span className="fw-700">LOGIN</span>
             </Button>

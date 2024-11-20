@@ -1,4 +1,4 @@
-export interface Achievement {
+export interface AchievementType {
   date: string;
   achievement: number;
 }

@@ -6,6 +6,7 @@ interface ButtonProps {
   size?: "medium" | "large";
   disabled?: boolean;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   className?: string;
 }
 
@@ -15,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   size = "medium",
   disabled = false,
   onClick,
+  type = "button",
   className = "",
 }) => {
   const baseStyles = "rounded-md border-none pointer";
@@ -41,6 +43,7 @@ const Button: React.FC<ButtonProps> = ({
       `}
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {children}
     </button>

@@ -45,7 +45,7 @@ const Column = () => {
     <>
       <section className="recommended-column pt-14 pb-6">
         <div className="container">
-          <div className="flex gap-8">
+          <div className="flex gap-8 flex-wrap">
             <div className={`${styles.recommendedColumnItem} bg-dark-500`}>
               <h2 className="uppercase font-inter fs-22 color-primary-300 fw-400 text-center">
                 RECOMMENDED COLUMN
@@ -85,7 +85,7 @@ const Column = () => {
         <div className="container">
           <div className={`${styles.mxCustom} row`}>
             {posts.map((post) => (
-              <PostCard key={post.id} {...post} className="col-md-3" />
+              <PostCard key={post.id} {...post} className="col-md-3 col-sm-6 col-12" />
             ))}
           </div>
           {hasMore && (

@@ -21,3 +21,14 @@ export interface ColumnParams {
   page?: number;
   limit?: number;
 }
+
+export interface MealParams {
+  page?: number;
+  limit?: number;
+  type?: string;
+}
+
+export interface DiaryParams {
+  page?: number;
+  limit?: number;
+}

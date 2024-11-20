@@ -1,9 +1,76 @@
+@use "sass:map";
 @use "../../styles/abstracts/variables" as *;
 
+.buttonScroll {
+  background-color: map.get($colors, "primary-300");
+  flex: 1;
+  aspect-ratio: 1 / 1;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .buttonScrollImage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    .imageBackground {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      aspect-ratio: 1 / 1;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+    .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      aspect-ratio: 1 / 1;
+      background-color: #000000;
+      opacity: 0.5;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+    }
+    h2 {
+      z-index: 2;
+    }
+    .bodyRecordDescription {
+      z-index: 2;
+      background-color: map.get($colors, "primary-400");
+      width: 160px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &:hover {
+    .imageBackground {
+      filter: grayscale(0%);
+    }
+
+    .overlay {
+      opacity: 0;
+    }
+  }
+}
+
 .bodyRecordWrapper {
+  width: 100%;
   height: 304px;
 }
 
 .exerciseWrapper {
-  height: 264px;
+  width: 100%;
+  height: 304px;
 }
